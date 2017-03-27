@@ -1,4 +1,4 @@
-class EvaluationsController < ApplicationController
+class Dashboard::EvaluationsController < ApplicationController
   def index
     Evaluation.all
   end

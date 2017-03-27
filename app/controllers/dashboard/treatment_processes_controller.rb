@@ -1,4 +1,4 @@
-class TreatmentProcessesController < ApplicationController
+class Dashboard::TreatmentProcessesController < ApplicationController
   before_action :set_treatment_proces, only: [:show, :edit, :update, :destroy]
   def index
     @treatments = TreatmentProcess.all
