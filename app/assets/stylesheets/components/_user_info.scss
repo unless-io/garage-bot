@@ -1,0 +1,15 @@
+.user-info-container {
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 100vh;
+  .user-info-wrapper {
+    max-width: 400px;
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px;
+    align-items: center;
+    img {
+      margin-right: 10px;
+    }
+  }
+}

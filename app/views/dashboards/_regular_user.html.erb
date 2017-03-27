@@ -1,0 +1,11 @@
+<div class="user-info-container">
+  <%= render partial: "user_info" %>
+  <div class="row">
+    <!-- cards replace by @evaluations -->
+    <% 10.times do %>
+    <div class="col s6">
+      <%= render partial: "cards/evaluation_card" %>
+    </div>
+    <% end %>
+  </div>
+</div>
