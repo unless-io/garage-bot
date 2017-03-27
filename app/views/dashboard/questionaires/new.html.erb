@@ -1,5 +1,5 @@
-<%= simple_form_for @questionaire do |f| %>
-  <%= f.input :username %>
-  <%= f.input :password %>
+<%= simple_form_for @questionaire, url: dashboard_templates_path, method: :post do |f| %>
+  <%= f.input :title %>
+  <%= f.input :instruction %>
   <%= f.button :submit %>
 <% end %>
