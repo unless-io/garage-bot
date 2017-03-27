@@ -6,10 +6,18 @@
   margin: 0;
   text-align: center;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    background-color: transparent;
+    border: none;
+    font-size: 26px;
+  }
 }
 .alert-info {
-  background: green;
+  background: #4caf50;
 }
 .alert-warning {
-  background: red;
+  background: #b71c1c;
 }

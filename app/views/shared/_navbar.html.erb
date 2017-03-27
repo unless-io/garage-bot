@@ -1,14 +1,13 @@
  <nav>
   <div class="nav-wrapper blue">
-    <%= link_to "Garagebot", root_path, class: "brand-logo" %>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <div class="garage-nav"> 
+      <%= link_to "Garagebot", root_path, class: "garage-logo" %>
 
       <% if user_signed_in? %>
 
       <!-- Dropdown Trigger -->
-      <%= link_to "#", id: "navbar-menu", class: "navbar-dropdown", "data-activates": "dropdown1" do %>
-      <%= image_tag "http://placehold.it/30x30" %>
-      <% end %>
+      <%= link_to "", "#", id: "navbar-menu", class: "navbar-dropdown", style: "background-image: url(#{current_user.facebook_picture_url})", "data-activates": "dropdown1" %>
+
 
 
       <!-- Dropdown Structure -->
@@ -37,7 +36,6 @@
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-item navbar-link" %>
 
       <% end %>
-
-    </ul>
+    </div>
   </div>
 </nav>

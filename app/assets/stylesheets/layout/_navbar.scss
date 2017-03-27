@@ -1,0 +1,23 @@
+#navbar-menu {
+  height: 100%;
+  width: 100px;
+  background-size: cover;
+  background-position: center;
+}
+
+.garage-nav {
+  max-width: 800px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  .garage-logo {
+    color: #fff;
+    display: inline-block;
+    font-size: 2.1rem;
+    padding: 0;
+    white-space: nowrap;
+  }
+}
