@@ -1,0 +1,17 @@
+<div class="user-info-container">
+  <div class="user-info-wrapper">
+    <%= render partial: "user_info" %>
+
+    <h4>Hello admin</h4>
+
+    <%= link_to "All evaluations", dashboard_user_evaluations_path(current_user) %>
+
+    <h4>See all questionaires</h4>
+
+    <%= link_to "All questionaires", dashboard_templates_path  %>
+
+    <h4>Create new template</h4>
+
+    <%= link_to "New template", new_dashboard_template_path  %>
+  </div>
+</div>

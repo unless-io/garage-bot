@@ -14,3 +14,11 @@
 @import "layout/index";
 @import "components/index";
 @import "pages/index";
+
+body {
+  padding-top: 64px;
+  nav {
+    position: absolute;
+    top: 0;
+  }
+}

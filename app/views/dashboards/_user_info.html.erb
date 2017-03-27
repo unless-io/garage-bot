@@ -1,0 +1,20 @@
+  <div class="user-info-wrapper">
+
+    <%= image_tag current_user.facebook_picture_url %>
+
+    <ul class="list-unstyle right-align">
+      <li>
+        <h3>
+          <%= current_user.first_name %>
+        </h3>
+      </li>
+      <li>
+        <h3>
+          <%= current_user.last_name %>
+        </h3>
+      </li>
+      <li>
+        <%= current_user.email %>
+      </li>
+    </ul>
+  </div>
