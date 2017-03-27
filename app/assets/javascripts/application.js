@@ -1,4 +1,5 @@
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
+//= require materialize
+//= require dropdown
 //= require_tree .
