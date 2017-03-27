@@ -1,4 +1,4 @@
-class QuestionairesController < ApplicationController
+class Dashboard::QuestionairesController < ApplicationController
   def index
   end
 
