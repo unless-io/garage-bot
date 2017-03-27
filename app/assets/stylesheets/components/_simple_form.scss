@@ -1,0 +1,21 @@
+.simple_form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.devise-links {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+  flex-direction: column;
+  align-items: flex-start;
+  .devise-link-button {
+    display: block;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+  }
+  .devise-link-facebook {
+    background: #3B5998;
+  }
+}
