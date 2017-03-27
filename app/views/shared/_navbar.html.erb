@@ -6,7 +6,10 @@
       <% if user_signed_in? %>
 
       <!-- Dropdown Trigger -->
-      <%= image_tag "http://placehold.it/30x30", class: "dropdown-button btn", id: "navbar-menu", "data-activates": "dropdown1" %>
+      <%= link_to "#", id: "navbar-menu", class: "navbar-dropdown", "data-activates": "dropdown1" do %>
+      <%= image_tag "http://placehold.it/30x30" %>
+      <% end %>
+
 
       <!-- Dropdown Structure -->
       <ul id='dropdown1' class='dropdown-content'>
