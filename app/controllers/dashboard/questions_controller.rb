@@ -4,16 +4,21 @@ class Dashboard::QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.questionaire = @questionaire
     if @question.save
-      redirect_to dashboard_template_path(@questionaire)
+      respond_to do |format|
+        format.html { redirect_to dashboard_template_path(@questionaire) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      render 'dashboard/templates'
-      # not sure about this
+       respond_to do |format|
+        format.html { render 'dashboard/templates/show' }       # not sure about this
+        format.js  # <-- idem
+      end
     end
   end
 
   private
 
   def question_params
-    params.require(:question).permit(:type, :content)
+    params.require(:question).permit(:category, :content)
   end
 end

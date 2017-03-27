@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20170321150013) do
 
   create_table "questions", force: :cascade do |t|
     t.integer  "questionaire_id"
-    t.string   "type"
+    t.string   "category"
     t.text     "content"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false

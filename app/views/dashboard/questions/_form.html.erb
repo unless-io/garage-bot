@@ -1,1 +1,5 @@
-<h1> ik ben het formulier om vragen toe te voegen!!</h1>
+<%= simple_form_for([ questionaire, question ], remote: true, url: dashboard_template_questions_path(questionaire)) do |form| %>
+  <%= form.input :category %>
+  <%= form.input :content %>
+  <%= form.button :submit %>
+<% end %>

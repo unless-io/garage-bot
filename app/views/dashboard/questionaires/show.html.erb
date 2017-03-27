@@ -1,6 +1,14 @@
 <%= @questionaire.title %>
 <%= @questionaire.instruction %>
 
-
+<div id="questions">
+  <% if @questionaire.questions.blank? %>
+    Create your first question.
+  <% else %>
+    <% @questionaire.questions.each do |question| %>
+      <%= render 'dashboard/questions/show', question: question %>
+    <% end %>
+  <% end %>
+</div>
 
 <%= render 'dashboard/questions/form', question: @question, questionaire: @questionaire %>
