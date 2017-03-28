@@ -16,6 +16,12 @@ class Dashboard::QuestionsController < ApplicationController
     end
   end
 
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    redirect_to dashboard_template_path(@questionaire)
+  end
+
   private
 
   def question_params

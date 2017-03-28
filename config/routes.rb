@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :dashboard do
     resources :ongoing, controller: "ongoings", only: [:index]
     resources :templates, controller: "questionaires" do
-      resources :questions, only: :create
+      resources :questions, only: [:create, :destroy]
     end
     resources :users, except: [:new, :create] do
       resources :treatments, controller: "treatment_processes", except: [:new]

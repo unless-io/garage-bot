@@ -2,6 +2,7 @@ class Dashboard::QuestionairesController < ApplicationController
   before_action :set_questionaire, only: [:show, :edit, :update, :destroy]
 
   def index
+    @questionaires = Questionaire.all
   end
 
   def show
@@ -29,6 +30,8 @@ class Dashboard::QuestionairesController < ApplicationController
   end
 
   def destroy
+    @questionaire.destroy
+    redirect_to dashboard_templates_path
   end
 
   private
