@@ -20,12 +20,12 @@
   <div class="container-questions">
     <div id="questions">
       <% if @questionaire.questions.blank? %>
-      Create your first question.
+      <div id="no-questions">
+        Create your first question.
+      </div>
       <% else %>
         <% @questionaire.questions.each do |question| %>
-          <%= render 'dashboard/questions/show', question: question %>
-          <!-- FIX ME! -->
-          <%= link_to "Remove Question", dashboard_template_question_path(question), method: :delete  %>
+          <%= render 'dashboard/questions/show', question: question, questionaire: @questionaire %>
           <hr>
         <% end %>
       <% end %>

@@ -9,5 +9,6 @@
   // Show the new review with an animation!
   new_question.slideDown();
   // Reset the form
+  $('#no-questions').remove();
   $('#new_question').html("<%= j render 'dashboard/questions/form', questionaire: @questionaire, question: Question.new %>");
 <% end %>
