@@ -1,0 +1,11 @@
+<%= render partial: "dashboards/regular_user", locals: { current_user: @user, cards: false } %>
+
+<%= simple_form_for @treatment_process, url: dashboard_user_treatments_path(@user) do |f| %>
+  <%= f.input :questionaire_id, collection: @questionaires %>
+  <%= f.input :client_id, as: :hidden, value: @user.id %>
+  <%= f.input :frequency, collection: %w(Weekly Daily Monthly) %>
+  <%= f.input :duration, collection: ["Two weeks", "One month", "Three months"] %>
+  <%= f.input :start_date %>
+  <%= f.submit %>
+<% end %>
+
