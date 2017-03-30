@@ -7,6 +7,7 @@ class Dashboard::QuestionairesController < ApplicationController
 
   def show
     @question = Question.new
+    @question.question_options.build
   end
 
   def new
