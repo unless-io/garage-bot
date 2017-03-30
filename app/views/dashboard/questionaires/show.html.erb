@@ -1,14 +1,36 @@
-<%= @questionaire.title %>
-<%= @questionaire.instruction %>
+<div class="container">
+  <div class="row">
+    <div class="col s6 offset-s3">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <%= image_tag "placeholder_bunny.jpeg", class: "activator questionaire-card" %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4"><%= @questionaire.title %><i class="material-icons right">info</i></span>
+          <p><a href="#">This is a link</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4"><%= @questionaire.title %><i class="material-icons right">close</i></span>
+          <p><%= @questionaire.instruction %></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div id="questions">
-  <% if @questionaire.questions.blank? %>
-    Create your first question.
-  <% else %>
-    <% @questionaire.questions.each do |question| %>
-      <%= render 'dashboard/questions/show', question: question %>
-    <% end %>
-  <% end %>
+  <div class="container-questions">
+    <div id="questions">
+      <% if @questionaire.questions.blank? %>
+      <div id="no-questions">
+        Create your first question.
+      </div>
+      <% else %>
+        <% @questionaire.questions.each do |question| %>
+          <%= render 'dashboard/questions/show', question: question, questionaire: @questionaire %>
+          <hr>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <%= render 'dashboard/questions/form', question: @question, questionaire: @questionaire %>

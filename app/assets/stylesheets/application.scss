@@ -17,6 +17,10 @@
 
 body {
   padding-top: 64px;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
   nav {
     position: absolute;
     top: 0;
