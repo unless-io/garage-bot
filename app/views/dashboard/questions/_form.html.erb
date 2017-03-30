@@ -1,5 +1,17 @@
-<%= simple_form_for([ questionaire, question ], remote: true, url: dashboard_template_questions_path(questionaire)) do |form| %>
-  <%= form.input :category %>
-  <%= form.input :content %>
-  <%= form.button :submit %>
+<%= simple_form_for([ questionaire, question ], remote: true, html: { id: "question-form-dropdown" }, url: dashboard_template_questions_path(questionaire)) do |f| %>
+  <%= f.input :category, collection: ["Yes/No", "Multiple choice", "Open", "Scale"] %>
+  <%= f.input :content, placeholder: "Question" %>
+
+  <h3>Possible answers</h3>
+
+  <div id="question-options">
+    <%= f.simple_fields_for :question_options do |question_option| %>
+      <%= render partial: 'question_option_fields', locals: { f: question_option } %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add question_option', f, :question_options %>
+    </div>
+  </div>
+  <%= f.button :submit, id: "select-action"%>
 <% end %>
+

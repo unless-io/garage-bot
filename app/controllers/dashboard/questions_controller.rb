@@ -30,6 +30,6 @@ class Dashboard::QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:category, :content)
+    params.require(:question).permit(:category, :content, question_options_attributes: [:id, :content, :_destroy])
   end
 end
