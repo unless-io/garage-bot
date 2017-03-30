@@ -1,7 +1,9 @@
   <div class="user-info-wrapper">
-
-    <%= image_tag current_user.facebook_picture_url %>
-
+    <% if current_user.facebook_picture_url.nil? %>
+      <%= image_tag "placeholder_bunny.jpeg", class: "placeholder_bunny" %>
+    <% else %>
+      <%= image_tag current_user.facebook_picture_url %>
+    <% end %>
     <ul class="list-unstyle right-align">
       <li>
         <h3>

@@ -1,14 +1,16 @@
  <nav>
-  <div class="nav-wrapper blue">
-    <div class="garage-nav"> 
+  <div class="nav-wrapper teal">
+    <div class="garage-nav">
       <%= link_to "Garagebot", root_path, class: "garage-logo" %>
 
-      <% if user_signed_in? %>
+      <% if user_signed_in?  %>
 
       <!-- Dropdown Trigger -->
-      <%= link_to "", "#", id: "navbar-menu", class: "navbar-dropdown", style: "background-image: url(#{current_user.facebook_picture_url})", "data-activates": "dropdown1" %>
-
-
+      <% if current_user.facebook_picture_url.nil? %>
+        <%= link_to "", "#", id: "navbar-menu", class: "navbar-dropdown", style: "background-image: url(#{image_path("placeholder_bunny.jpeg")})", "data-activates": "dropdown1" %>
+      <% else %>
+        <%= link_to "", "#", id: "navbar-menu", class: "navbar-dropdown", style: "background-image: url(#{current_user.facebook_picture_url})", "data-activates": "dropdown1" %>
+      <% end %>
 
       <!-- Dropdown Structure -->
       <ul id='dropdown1' class='dropdown-content'>

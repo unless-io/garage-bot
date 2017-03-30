@@ -1,10 +1,7 @@
 <% if @question.errors.any? %>
   // Render new review form with errors
-  console.log("Mijn question heeft een errror");
   $('#new_question').html("<%= j render 'dashboard/questions/form', questionaire: @questionaire, question: @question %>");
 <% else %>
-    console.log("ik ben okeeee");
-
   // Create a paragraph for the new review. But hide it.
   var new_question = $("<%= j render 'dashboard/questions/show', question: @question %>").hide();
   // Add it to the DOM, at the end of the existing reviews. It's still hidden.
@@ -12,5 +9,6 @@
   // Show the new review with an animation!
   new_question.slideDown();
   // Reset the form
+  $('#no-questions').remove();
   $('#new_question').html("<%= j render 'dashboard/questions/form', questionaire: @questionaire, question: Question.new %>");
 <% end %>
