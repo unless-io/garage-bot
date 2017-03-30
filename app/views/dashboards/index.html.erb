@@ -1,6 +1,6 @@
 <% if current_user.admin %>
   <%= render partial: "admin" %>
 <% else %>
-  <%= render partial: "regular_user" %>
+  <%= render partial: "regular_user", locals: { current_user: current_user, cards: true } %>
 <% end %>
 

@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20170321150013) do
     t.boolean  "admin",                  default: false
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "facebook_id"
+    t.bigint   "facebook_id"
     t.integer  "coach_id"
     t.string   "provider"
     t.string   "uid"
