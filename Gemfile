@@ -10,6 +10,7 @@ gem 'devise'
 gem 'redis'
 gem 'omniauth-facebook'
 gem 'cocoon'
+gem 'facebook-messenger'
 
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'

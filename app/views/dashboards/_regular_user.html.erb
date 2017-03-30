@@ -1,5 +1,7 @@
 <div class="user-info-container">
-  <%= render partial: "user_info" %>
+  <%= render partial: "dashboards/user_info" %>
+
+  <% if cards %>
   <div class="row">
     <!-- cards replace by @evaluations -->
     <% 10.times do %>
@@ -8,4 +10,6 @@
     </div>
     <% end %>
   </div>
+  <% end %>
+
 </div>
