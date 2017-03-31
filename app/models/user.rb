@@ -7,6 +7,12 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :coach, class_name: "User"
+  has_many :treatment_processes
+  has_many :questionaires, through: :treatment_processes
+  has_many :evaluations
+  has_many :pending_evaluations
+  has_many :pending_questionaires, through: :pending_evaluations
+
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
