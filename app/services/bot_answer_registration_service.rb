@@ -10,22 +10,21 @@ class BotAnswerRegistrationService
     position = @pending_evaluation.progress - 1
     @previous_question = @questionaire.questions[position]
     if position.zero?
-      @evaluation = Evaluation.create(questionaire: questionaire, user: @current_bot_user)
+      @evaluation = Evaluation.create(questionaire: @questionaire, user: @current_bot_user)
     else
-      @evaluation = Eveluation.where(questionaire: @questionaire)
-    else
-      check_answer_type
+      @evaluation = Evaluation.find_by_questionaire_id(@questionaire.id)
     end
+    check_answer_type
   end
 
   private
 
   def check_answer_type
-    if @message.payload.nil?
+    # if @message.payload.nil?
       answer_without_payload
-    else
-      answer_with_payload
-    end
+    # else
+    #   answer_with_payload
+    # end
   end
 
   def answer_with_payload

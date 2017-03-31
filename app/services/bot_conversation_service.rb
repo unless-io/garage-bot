@@ -16,18 +16,18 @@ class BotConversationService
   private
 
   def set_pending_evaluations
-    @pending_evaluations = @user.pending_evaluations
+    @pending_evaluations = @current_bot_user.pending_evaluations
   end
 
   def pending_evaluations?
-    @user.pending_evaluations.any?
+    @current_bot_user.pending_evaluations.any?
   end
 
   def questionaire_handler
-    BotQuestionaireHandlingService.new(message: message, pending_evaluations: @pending_evaluations, current_bot_user: @current_bot_user).call
+    BotQuestionaireHandlingService.new(message: @message, pending_evaluations: @pending_evaluations, current_bot_user: @current_bot_user).call
   end
 
   def no_questionaire_assigned_handler
-    BotNoCurrentQuestionaireService.new(message: message).call
+    BotNoCurrentQuestionaireService.new(message: @message).call
   end
 end

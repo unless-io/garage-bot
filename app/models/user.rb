@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_many :questionaires, through: :treatment_processes
   has_many :evaluations
   has_many :pending_evaluations
-  has_many :pending_questionaires, through: :pending_evaluations
 
 
   def self.find_for_facebook_oauth(auth)
