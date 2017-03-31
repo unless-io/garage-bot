@@ -1,3 +1,9 @@
 <p><%= question.category %></p>
 <p><%= question.content %></p>
+<% if question.question_options.any? %>
+  <% question.question_options.each do |question_option| %>
+    <%= question_option.content %>
+  <% end %>
+<% end %>
 <%= link_to "Remove Question", dashboard_template_question_path(@questionaire, question), method: :delete  %>
+<hr>
