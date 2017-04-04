@@ -1,1 +1,22 @@
-confirmed!
+<div class="container">
+  <div class="row">
+    <div class="col s6 offset-s3">
+      <h3>Welcome <%= current_user.first_name %></h3>
+      <div class="confirmation-paragraph">
+        <p>Your account has been <strong>confirmed</strong> <i class="material-icons thumb-icon">thumb_up</i></p>
+        <p>
+        You are now ready to receive questionaires through Facebook Messenger. For more information about the usage of Facebook Messenger by Spirit, please read more on this <b><%= link_to "link", root_path, class: "confirmation-link" %></b>.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s6 offset-s3">
+      <iframe src="//giphy.com/embed/IThjAlJnD9WNO" width="480" height="360.48979591836735" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+      <p>
+        <a href="https://giphy.com/gifs/bear-hello-waving-IThjAlJnD9WNO">
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
