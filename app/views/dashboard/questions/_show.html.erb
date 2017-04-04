@@ -1,9 +1,25 @@
-<p><%= question.category %></p>
-<p><%= question.content %></p>
-<% if question.question_options.any? %>
-  <% question.question_options.each do |question_option| %>
-    <%= question_option.content %>
-  <% end %>
-<% end %>
-<%= link_to "Remove Question", dashboard_template_question_path(@questionaire, question), method: :delete  %>
-<hr>
+<div class="collection-item">
+  <div class="flex-question">
+  <p><%= question.content %>
+      <span><%= link_to dashboard_template_question_path(@questionaire, question), class: "btn-garage-remove", method: :delete do %>
+        <i class="fa fa-window-close-o fa-lg" aria-hidden="true"></i>
+        <% end %>
+      </span>
+    </p>
+    <div class="question-category">
+    <%= question.category %>
+    </div>
+  </div>
+  <div class="question-options-container">
+    <% if question.question_options.any? %>
+    <ul>
+      <% question.question_options.each do |question_option| %>
+      <li>
+        <%= question_option.content %>
+      </li>
+      <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+</div>

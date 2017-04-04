@@ -8,6 +8,7 @@ class Dashboard::QuestionairesController < ApplicationController
   def show
     @question = Question.new
     @question.question_options.build
+    check_evaluations_size
   end
 
   def new
@@ -36,6 +37,18 @@ class Dashboard::QuestionairesController < ApplicationController
   end
 
   private
+
+  def check_evaluations_size
+    @evaluations = Evaluation.where(questionaire_id: @questionaire.id)
+    if @evaluations.size == 0
+      @text_evaluations = "no evaluations for this questionaire"
+    elsif @evaluations.size == 1
+      @text_evaluations = "1 evaluation for this questionaire"
+    else
+      @text_evaluations = "#{@evaluations.size} evaluations for this questionaire"
+    end
+  end
+
   def set_questionaire
     @questionaire = Questionaire.find(params[:id])
   end
