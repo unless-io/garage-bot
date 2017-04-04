@@ -1,4 +1,20 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
+.home-page {
+  height: 80vh;
+  background: #fafafa;
+  .home-title {
+    color: #1c1b1b;
+    text-align: center;
+  }
+  .home-paragraph-title {
+    font-weight: 200;
+    text-align: center;
+  }
+  .p-expl-text {
+    text-align: justify;
+  }
+  .team-finish {
+        text-align: right;
+    margin-right: 2px;
+    font-weight: 300;
+  }
+}
