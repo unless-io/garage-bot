@@ -1,0 +1,15 @@
+<div class="form-group radio_buttons optional treatment_process_<%= type %>">
+  <label class="control-label radio_buttons optional">
+    <%= type %>
+  </label>
+  <input type="hidden" name="treatment_process[<%= type %>]" value="">
+
+  <% options.each do |option| %>
+  <p>
+    <input name="treatment_process[<%= type %>]" type="radio" id="<%= type %>_<%= option %>" value="<%= option.gsub(/_/, " ") %>"/>
+    <label for="<%= type %>_<%= option %>">
+      <%= option.gsub(/_/, " ").capitalize %>
+    </label>
+  </p>
+  <% end %>
+</div>

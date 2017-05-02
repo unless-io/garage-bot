@@ -1,15 +1,19 @@
 <div class="user-info-container">
   <%= render partial: "dashboards/user_info" %>
 
-  <% if cards %>
-  <div class="row">
-    <!-- cards replace by @evaluations -->
-    <% 10.times do %>
-    <div class="col s6">
-      <%= render partial: "cards/evaluation_card" %>
+  <% if current_user.evaluations.any? %>
+    <div class="row">
+      <!-- cards replace by @evaluations -->
+      <% current_user.evaluations.each do |evaluation| %>
+      <div class="col s6">
+        <%= render partial: "cards/evaluation_card" %>
+      </div>
+      <% end %>
     </div>
-    <% end %>
-  </div>
+  <% else %>
+  <h2 class="text-center">
+    No evaluations yet.
+  </h2>
   <% end %>
 
 </div>

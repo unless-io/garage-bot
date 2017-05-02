@@ -1,3 +1,5 @@
+require 'faker'
+
 Questionaire.destroy_all
 Question.destroy_all
 QuestionOption.destroy_all
@@ -43,3 +45,18 @@ question10 = Question.create!(questionaire_id: quest2.id, category: "Scale", con
 question11 = Question.create!(questionaire_id: quest2.id, category: "Open", content: "What is the biggest problem after the previous one?")
 #closed but scale
 question12 = Question.create!(questionaire_id: quest2.id, category: "Scale", content: "How serious is this problem on a scale of 1-10?")
+
+20.times do
+  User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: "blabla#{rand(1..40)}"
+    )
+end
+
+
+
+
+
+
