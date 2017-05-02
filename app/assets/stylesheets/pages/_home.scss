@@ -1,5 +1,11 @@
 .home-page {
-  height: 80vh;
+  padding-bottom: 40px;
+  .giphy {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+  }
   .home-title {
     color: #1c1b1b;
     text-align: center;
