@@ -1,51 +1,13 @@
-<div class="user-info-container">
-  <div class="user-info-wrapper">
-    <%= render partial: "user_info" %>
-  </div>
+<div class="container-custom">
   <div class="row">
-    <div class="col s12">
-      <h4>Hello admin</h4>
-
-      <h4>See all questionaires</h4>
-
-      <%= link_to "All questionaires", dashboard_templates_path  %>
-
-      <h4>Create new template</h4>
-
-      <%= link_to "New template", new_dashboard_template_path  %>
-
-      <ul>
-        <% @coached_treatments.each do |status, collection| %>
-        <li>
-          <h4>
-            <%= status %>
-          </h4>
-          <ul>
-            <% collection.each do |treatment| %>
-            <li>
-            <table>
-              <thead>
-                
-              </thead>
-              <tbody>
-                
-              </tbody>
-            </table>
-              <p>
-                Client is <%= treatment.client.first_name %>
-              </p>
-              <p>
-                Coach is <%= treatment.creator.first_name %>
-              </p>
-              <p>
-                Questionaire is <%= treatment.questionaire.title %>
-              </p>
-            </li>
-            <% end %>
-          </ul>
-        </li>
-        <% end %>
-      </ul>
+    <div class="col s4">
+      <%= render partial: "shared/sidebar" %>
+    </div>
+    <div class="col s8">
+      <!-- CONTENT -->
+      <h4>
+        Dashboard
+      </h4>
     </div>
   </div>
 </div>
