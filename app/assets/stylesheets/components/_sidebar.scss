@@ -1,0 +1,51 @@
+.sidebar {
+  padding-right: 20px;
+  border-right: 1px solid #e0e0e0;
+  margin: 10px;
+  height: 100vh;
+  .links {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    justify-content: space-around;
+    .link {
+      height: 50px;
+      margin-left: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .general-link {
+        color: #009688;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &:hover > .underline {
+          width: 100%;
+        }
+        .underline {
+          width: 0%;
+          border-bottom: 4px solid #009688;
+          transition: width 200ms linear;
+        }
+        .underline.active {
+          width: 100%;
+        }
+      }
+      .add {
+        background-color: #009688;
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+        a {
+          color: white; 
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+        }
+      }
+    }
+  }
+}

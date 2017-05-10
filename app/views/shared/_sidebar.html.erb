@@ -1,0 +1,45 @@
+<div class="sidebar">
+  <div class="links">
+
+    <!-- LINK TO DASHBOARD START -->
+    <div class="link">
+      <%= link_to dashboard_path, class: "general-link" do %>
+      Dashboard
+        <%= render partial: "shared/sidebar_underline", locals: { controller: "dashboards" } %>
+      <% end %>
+    </div>
+    <!-- LINK TO DASHBOARD END -->
+
+    <div class="divider"></div>
+
+    <!-- LINK TO TEMPLATES START -->
+    <div class="link">
+      <%= link_to dashboard_templates_path, class: "general-link" do %>
+        Templates
+         <%= render partial: "shared/sidebar_underline", locals: { controller: "dashboard/questionaires" } %>
+      <% end %>
+      <div class="add">
+        <%= link_to new_dashboard_template_path do %>
+          <i class="fa fa-plus"></i>
+        <% end %>
+      </div>
+    </div>
+    <!-- LINK TO TEMPLATES END -->
+
+    <div class="divider"></div>
+
+    <!-- LINK TO TREATMENS START -->
+    <div class="link">
+      <%= link_to dashboard_treatments_path, class: "general-link" do %>
+        Treatments
+        <%= render partial: "shared/sidebar_underline", locals: { controller: "dashboard/treatment_processes" } %>
+      <% end %>
+      <div class="add">
+        <%= link_to new_dashboard_treatment_path do %>
+          <i class="fa fa-plus"></i>
+        <% end %>
+      </div>
+    </div>
+    <!-- LINK TO TREATMENTS END -->
+  </div>
+</div>
