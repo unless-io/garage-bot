@@ -5,7 +5,7 @@ class Dashboard::TreatmentProcessesController < ApplicationController
   end
 
   def show
-    @message = check_ending
+    @message = TreatmentStatusService.new(treatment: @treatment).call
   end
 
   def new
@@ -35,28 +35,6 @@ class Dashboard::TreatmentProcessesController < ApplicationController
   end
 
   private
-
-  def check_ending
-    if @treatment.duration.nil? || @treatment.frequency.nil?
-      "Information incomplete, please fill out all fields"
-    else
-      if Date.today > end_date
-        "Process ended"
-      else
-        "Process ongoing"
-      end
-    end
-  end
-
-  def end_date
-    duration_conversion = {
-      "one week": 1.week,
-      "two weeks": 2.weeks,
-      "one month": 1.month,
-      "three months": 2.months
-    }
-    end_date = @treatment.start_date + duration_conversion[@treatment.duration.to_sym]
-  end
 
   def set_treatment_process
     @treatment = TreatmentProcess.find(params[:id])
