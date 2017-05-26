@@ -4,20 +4,23 @@
       <%= render partial: "shared/sidebar" %>
     </div>
     <div class="col s8">
-    <h4>
-      All templates
-    </h4>
+      <h4>
+        All templates
+      </h4>
       <div class="row">
         <% @questionaires.each do |questionaire| %>
         <div class="col s4">
           <div class="card  teal lighten-3">
             <div class="card-content white-text">
-              <span class="card-title"><%= questionaire.title %></span>
-              <p><%= questionaire.instruction %></p>
-            </div>
-            <div class="card-action">
-              <%= link_to "See template", dashboard_template_path(questionaire), class: "deep-orange-text" %>
-              <%= link_to "Remove template", dashboard_template_path(questionaire), method: :delete, class: "deep-orange-text" %>
+              <%= link_to dashboard_template_path(questionaire), class: "deep-orange-text" do %>
+              <span class="card-title">
+                <%= questionaire.title %>
+              </span>
+              <% end %>
+              <p>
+                <%= questionaire.instruction %>
+                
+              </p>
             </div>
           </div>
         </div>

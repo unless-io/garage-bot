@@ -11,8 +11,9 @@ Rails.application.routes.draw do
     resources :templates, controller: "questionaires" do
       resources :questions, only: [:create, :destroy]
     end
-    resources :treatments, controller: "treatment_processes"
-    resources :evaluations, only: [:index, :show]
+    resources :treatments, controller: "treatment_processes" do 
+      resources :evaluations, only: [:show]
+    end
     resources :users, only: [:show, :index]
   end
   get '/facebook_account_link', to: 'synchronisations#facebook_account_link'

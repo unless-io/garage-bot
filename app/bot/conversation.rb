@@ -1,5 +1,3 @@
-# app/bot/example.rb
-
 include Facebook::Messenger
 include GarageBotHelper
 

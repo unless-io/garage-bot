@@ -6,13 +6,13 @@ class BotAnswerRegistrationService
   end
 
   def call
-    @questionaire = @pending_evaluation.questionaire
+    @questionaire = @pending_evaluation.treatment_process.questionaire
     position = @pending_evaluation.progress - 1
     @previous_question = @questionaire.questions[position]
     if position.zero?
-      @evaluation = Evaluation.create(questionaire: @questionaire, user: @current_bot_user)
+      @evaluation = Evaluation.create(treatment_process: @pending_evaluation.treatment_process, user: @current_bot_user)
     else
-      @evaluation = Evaluation.find_by_questionaire_id(@questionaire.id)
+      @evaluation = Evaluation.find_by_treatment_process_id(@pending_evaluation.treatment_process.id)
     end
     check_answer_type
   end
@@ -28,10 +28,10 @@ class BotAnswerRegistrationService
   end
 
   def answer_with_payload
-    @evaluation.answers << Answer.create(content: @message.payload, evaluation: @evaluation)
+    @evaluation.answers << Answer.create(content: @message.payload, evaluation: @evaluation, question: @previous_question)
   end
 
   def answer_without_payload
-    @evaluation.answers << Answer.create(content: @message.text, evaluation: @evaluation)
+    @evaluation.answers << Answer.create(content: @message.text, evaluation: @evaluation, question: @previous_question)
   end
 end

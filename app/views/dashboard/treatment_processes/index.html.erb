@@ -4,10 +4,38 @@
       <%= render partial: "shared/sidebar" %>
     </div>
     <div class="col s8">
-      <!-- CONTENT -->
       <h4>
         All treatments
       </h4>
+      <% @treatments.each do |status, treatments| %>
+      <div class="row">
+        <h5>
+          <%= status %>
+        </h5>
+        <% treatments.each do |treatment| %>          
+        <div class="col s4">
+          <div class="card  teal lighten-3">
+            <div class="card-content white-text">
+              <%= link_to dashboard_treatment_path(treatment), class: "deep-orange-text" do %>
+              <span class="card-title">
+                <%= treatment.client.full_name %>
+              </span>
+              <% end %>
+              <strong>
+                <%= treatment.questionaire.title %>
+              </strong>
+              <p>
+                Started: <%= treatment.start_date.strftime("%d/%m/%Y") %>
+              </p>
+              <p>
+                Ends: <%= treatment.end_date.strftime("%d/%m/%Y") %>
+              </p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>

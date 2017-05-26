@@ -1,12 +1,22 @@
-<%= simple_form_for @treatment, url: dashboard_treatments_path do |f| %>
-  <h3>
-    Schedule a questionaire
-  </h3>
-  <%= f.input :creator_id, as: :hidden, input_html: { value: current_user.id } %>
-  <%= f.input :client_id, collection: @users.map {|user| ["#{user.last_name}, #{user.first_name}", user.id]} %>
-  <%= f.input :questionaire_id, collection: @questionaires.map {|questionaire| [questionaire.title, questionaire.id]} %>
-  <%= render partial: "radio_buttons_treatment", locals: { f: f, options: @frequency_options, type: "frequency" } %>
-  <%= render partial: "radio_buttons_treatment", locals: { f: f, options: @duration_options, type: "duration" } %>
-  <%= f.input :start_date %>
-  <%= f.submit class: "waves-effect waves-light btn" %>
-<% end %>
+<div class="container-custom">
+  <div class="row">
+    <div class="col s4">
+      <%= render partial: "shared/sidebar" %>
+    </div>
+    <div class="col s8">
+      <h3>
+        Schedule a questionaire
+      </h3>
+      <%= simple_form_for @treatment, url: dashboard_treatments_path do |f| %>
+        <%= f.input :creator_id, as: :hidden, input_html: { value: current_user.id } %>
+        <%= f.input :client_id, collection: @users.map {|user| ["#{user.last_name}, #{user.first_name}", user.id]} %>
+        <%= f.input :questionaire_id, collection: @questionaires.map {|questionaire| [questionaire.title, questionaire.id]} %>
+        <%= render partial: "radio_buttons_treatment", locals: { f: f, options: @frequency_options, type: "frequency" } %>
+        <%= render partial: "radio_buttons_treatment", locals: { f: f, options: @duration_options, type: "duration" } %>
+        <%= f.input :start_date %>
+        <%= f.submit class: "waves-effect waves-light btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

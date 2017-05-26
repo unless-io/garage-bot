@@ -1,19 +1,8 @@
-<div class="row">
-  <div class="col s12">
-    <h3>
-      Settings page for <%= @treatment.questionaire.title %>
-    </h3>
-    <h4>
-      <%= @message %>
-    </h4>
-  </div>
-</div>
+Treatment page for <%= @treatment.questionaire.title %>
+<%= @message %>
 
-<div class="row">
-  <div class="col s6">
-    
-  </div>
-  <div class="col s6">
-    
-  </div>
-</div>
+<% if @treatment.evaluations.any? %>
+  <% @treatment.evaluations.each do |evaluation| %>
+    <%= link_to "#{evaluation.created_at}", dashboard_treatment_evaluation_path(@treatment, evaluation)  %>
+  <% end %>
+<% end %>
