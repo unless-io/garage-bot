@@ -39,7 +39,7 @@ class Dashboard::QuestionairesController < ApplicationController
   private
 
   def check_evaluations_size
-    @evaluations = Evaluation.where(questionaire_id: @questionaire.id)
+    @evaluations = Evaluation.joins(:treatment_process).where('questionaire_id = ?', @questionaire.id)
     if @evaluations.size == 0
       @text_evaluations = "no evaluations for this questionaire"
     elsif @evaluations.size == 1

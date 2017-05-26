@@ -83,7 +83,7 @@ class BotQuestionaireHandlingService
 
   def generate_scale_quick_replies
     quick_replies = []
-    3.times do |number|
+    5.times do |number|
       quick_replies << { content_type: 'text', title: (number + 1), payload: (number + 1) }
     end
     return quick_replies
