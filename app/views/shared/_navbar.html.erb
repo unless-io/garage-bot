@@ -7,9 +7,9 @@
 
       <!-- Dropdown Trigger -->
       <% if current_user.facebook_picture_url.nil? %>
-        <%= link_to "", "#", id: "navbar-menu", class: "navbar-dropdown", style: "background-image: url(#{image_path("placeholder_bunny.jpeg")})", "data-activates": "dropdown1" %>
+      <%= link_to "", "#", id: "navbar-menu", class: "navbar-dropdown", style: "background-image: url(#{image_path("placeholder_bunny.jpeg")})", "data-activates": "dropdown1" %>
       <% else %>
-        <%= link_to "", "#", id: "navbar-menu", class: "navbar-dropdown", style: "background-image: url(#{current_user.facebook_picture_url})", "data-activates": "dropdown1" %>
+      <%= link_to "", "#", id: "navbar-menu", class: "navbar-dropdown", style: "background-image: url(#{current_user.facebook_picture_url})", "data-activates": "dropdown1" %>
       <% end %>
 
       <!-- Dropdown Structure -->
@@ -34,9 +34,15 @@
 
       <% else %>
 
-      <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-item navbar-link" %>
+      <%= link_to user_facebook_omniauth_authorize_path, class: "navbar-item navbar-link" do %>
+      <i class="fa fa-<%= OmniAuth::Utils.camelize(:facebook).downcase %>"></i>
+      Sign in with <%= OmniAuth::Utils.camelize(:facebook) %>
+      <% end %>
 
+      <!-- Login text link -->
+      <!-- DISABLED -->
+      <% link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-item navbar-link" %>
+      <!-- END DISABLED -->
       <% end %>
     </div>
   </div>

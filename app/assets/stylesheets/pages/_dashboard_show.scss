@@ -1,0 +1,14 @@
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 50px;
+  .left {
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  ul {
+    margin: 0 10px;
+  }
+}

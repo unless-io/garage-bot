@@ -1,4 +1,6 @@
 <div class="nested-fields">
   <%= f.input :content %>
-  <%= link_to_remove_association "remove question options", f %>
+  <%= link_to_remove_association f, class: "red-text" do %>
+  <i class="fa fa-times"></i>
+  <% end %>
 </div>

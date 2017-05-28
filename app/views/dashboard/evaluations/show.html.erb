@@ -1,13 +1,44 @@
-<% if @evaluation.answers.any? %>
-
-  <% @evaluation.answers.each do |answer| %>
-  <p>
-    Question
-  </p>
-    <%= answer.question.content %>
-    <p>
-      Answer
-    </p>
-    <%= answer.content %>
-  <% end %>
+<div class="wrapper">
+<%= link_to dashboard_treatment_path(@evaluation.treatment_process), class: "teal-text" do %>
+<p>
+  <i class="fa fa-chevron-left"></i> Back to overview
+</p>
 <% end %>
+  <div class="card horizontal">
+    <div class="card-image">
+      <%= image_tag @evaluation.user.facebook_picture_url %>
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <span class="card-title">
+          <%= @evaluation.user.full_name %>
+        </span>
+        <p>
+          Evaluation for the '<%= @evaluation.treatment_process.questionaire.title %>' questionaire
+        </p>
+        <ul class="collection">
+          <li class="collection-item">
+            <%= @evaluation.treatment_process.questionaire.instruction %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <% if @evaluation.answers.any? %>
+  <ul class="collection">
+    <% @evaluation.answers.each_with_index do |answer, index| %>
+    <li class="collection-item teal lighten-4">
+      <p>
+        <strong>Question <%= index + 1 %>:</strong> <%= answer.question.content %>
+      </p>
+    </li>
+    <li class="collection-item">
+      <p>
+        <strong>Answer:</strong> <%= answer.content %>
+      </p>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
