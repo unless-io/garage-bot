@@ -6,10 +6,10 @@ class BotConversationAcceptService
 
   def call
     @message.reply(
-      text: "Let me know when you're ready",
+      text: "Laat het me weten als je klaar bent",
       quick_replies: [
-        { content_type: 'text', title: "I'm ready", payload: 'Yes' },
-        { content_type: 'text', title: 'No', payload: 'No' }
+        { content_type: 'text', title: "Ik ben klaar", payload: 'Yes' },
+        { content_type: 'text', title: 'Nog niet', payload: 'No' }
       ]
       )
   end

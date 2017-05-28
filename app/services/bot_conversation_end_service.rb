@@ -11,6 +11,6 @@ class BotConversationEndService
   private
 
   def goodbye_message
-    @message.reply(text: "Those were all the questions for this questionaire, have a nice day #{@current_bot_user.first_name}!")
+    @message.reply(text: "Dat waren alle vragen voor vandaag, fijne dag #{@current_bot_user.first_name}!")
   end
 end

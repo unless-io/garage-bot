@@ -14,8 +14,8 @@ class InitiateConversationService
         message: {
           text: 'Hello, are you ready for your evaluation today?',
           quick_replies: [
-            { content_type: 'text', title: "I'm ready", payload: 'Yes' },
-            { content_type: 'text', title: 'No', payload: 'No' }
+            { content_type: 'text', title: "Ik ben er klaar voor", payload: 'Yes' },
+            { content_type: 'text', title: 'Nee, nog niet', payload: 'No' }
           ]
         }
         }, access_token: ENV['ACCESS_TOKEN']

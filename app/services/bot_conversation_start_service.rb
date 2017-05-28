@@ -12,6 +12,6 @@ class BotConversationStartService
   private
 
   def hello_message
-    @message.reply(text: "Hi #{@current_bot_user.first_name}! These are your questions for today, they come from the #{@questionaire.title} questionaire!")
+    @message.reply(text: "Hoi #{@current_bot_user.first_name}! Hier komen jouw vragen voor vandaag, ze komen van de '#{@questionaire.title}' vragenlijst!")
   end
 end
