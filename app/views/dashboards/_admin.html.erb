@@ -8,18 +8,77 @@
         Dashboard
       </h4>
       <div class="row">
-        <div class="col s6">
-          <%= image_tag current_user.facebook_picture_url %>
-          <%= current_user.full_name %>
-          <%= current_user.email %>
+        <div class="col s12">
+          <div class="dashboard-header">
+            <div class="left">
+              <%= image_tag current_user.facebook_picture_url %>
+              <ul class="collection">
+                <li class="collection-item">
+                  <p class="grey-text">
+                    Name:
+                    <strong class="black-text">
+                      <%= current_user.full_name %>
+                    </strong>
+                  </p>
+                </li>
+                <li class="collection-item">
+                  <p class="grey-text">
+                    Email:
+                    <strong class="black-text">
+                      <%= current_user.email %>
+                    </strong>
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <%= link_to dashboard_treatments_path, class: "waves-effect waves-light btn" do %>
+            <%= @running_treatments_amount %> treatments ongoing
+            <% end %>
+          </div>
         </div>
-        <div class="col s6">
-        <div class="header">
-          <h3>
-            Ongoing treatments
-          </h3>
-        </div>
-
+        <div class="col s12">
+          <div class="header">
+            <% if @evaluations.any? %>
+            <h5>
+              Evaluations you haven't viewed yet
+            </h5>
+            <% else %>
+            <h5>
+              No new evaluations.
+            </h5>
+            <% end %>
+          </div>
+          <div class="cards">
+            <% @evaluations.each do |evaluation| %>
+            <%= link_to dashboard_treatment_evaluation_path(evaluation.treatment_process, evaluation), class: "card horizontal" do  %>
+            <div class="card-image">
+              <%= image_tag evaluation.user.facebook_picture_url %>
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+                <p class="grey-text">
+                  Client:
+                </p>
+                <p class="black-text">
+                  <strong><%= evaluation.treatment_process.client.full_name %></strong>
+                </p>
+                <p class="grey-text">
+                  Questionaire: 
+                </p>
+                <p class="black-text">
+                  <%= evaluation.treatment_process.questionaire.title %>
+                </p>
+                <p class="grey-text">
+                  Evaluation conducted on: 
+                </p>
+                <p class="black-text">
+                  <strong><%= evaluation.created_at.strftime('%A') %> <%= evaluation.created_at %></strong>
+                </p>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

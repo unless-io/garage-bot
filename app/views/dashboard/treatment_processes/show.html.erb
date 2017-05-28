@@ -1,8 +1,51 @@
-Treatment page for <%= @treatment.questionaire.title %>
-<%= @message %>
+<div class="container-custom">
+  <div class="row">
+    <div class="col s4">
+      <%= render partial: "shared/sidebar" %>
+    </div>
+    <div class="col s8">
+      <h4>
+        <%= @treatment.questionaire.title %> process for <%= @treatment.client.full_name %>
+      </h4>
+      <%= @message %> - <%= @treatment.checkpoints.length %> interactions remaining
 
-<% if @treatment.evaluations.any? %>
-  <% @treatment.evaluations.each do |evaluation| %>
-    <%= link_to "#{evaluation.created_at}", dashboard_treatment_evaluation_path(@treatment, evaluation)  %>
-  <% end %>
-<% end %>
+      <% if @treatment.evaluations.any? %>
+      <ul class="collection">
+        <% @treatment.evaluations.each do |evaluation| %>
+        <%= link_to dashboard_treatment_evaluation_path(@treatment, evaluation), class: "collection-item" do  %>
+        <p>
+          Evaluation conducted on: <strong><%= evaluation.created_at.strftime('%A') %> <%= evaluation.created_at %></strong>
+        </p>
+        <% end %>
+        <% end %>
+      </ul>
+      <% end %>
+      <% if @treatment.checkpoints.any? %>
+      <h4>
+        Scheduled interactions
+      </h4>
+      <%= link_to destroy_all_checkpoints_dashboard_treatment_checkpoint_path(@treatment), method: :delete, data: {confirm: 'Are you sure?' } do %>
+      <h6 class="black-text">
+        Destroy all checkpoints
+        <span class="red-text">
+          <i class="fa fa-times">
+          </i>
+        </span>
+      </h6>
+      <% end %>
+      <ul class="collection">
+        <% @treatment.checkpoints.each do |checkpoint| %>
+        <li class="collection-item">
+          <div class="checkpoint-item">
+            <%= checkpoint.scheduled_day %>
+            <%= link_to dashboard_treatment_checkpoint_path(@treatment, checkpoint), class: "red-text", method: :delete do %>
+            <i class="fa fa-times"></i>
+            <% end %>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+      <% end %>
+    </div>
+  </div>
+</div>

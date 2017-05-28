@@ -13,9 +13,16 @@ Rails.application.routes.draw do
     end
     resources :treatments, controller: "treatment_processes" do 
       resources :evaluations, only: [:show]
+      resources :checkpoints, only: [:destroy] do
+        member do 
+          delete :destroy_all_checkpoints
+        end
+      end
     end
     resources :users, only: [:show, :index]
   end
+
+
   get '/facebook_account_link', to: 'synchronisations#facebook_account_link'
   get '/facebook_account_confirmation', to: 'synchronisations#facebook_account_confirmation'
 end
