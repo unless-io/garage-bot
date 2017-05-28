@@ -2,8 +2,10 @@ class PendingEvaluation < ApplicationRecord
   belongs_to :treatment_process
   belongs_to :user
 
-  def self.generate
+  def self.generate_and_cleanup
     Checkpoint.where(scheduled_day: Date.today).each do |checkpoint|
+      PendingEvaluation.where(treatment_process: checkpoint.treatment_process).destroy_all
+
       PendingEvaluation.create(
         treatment_process: checkpoint.treatment_process, 
         user: checkpoint.treatment_process.client
