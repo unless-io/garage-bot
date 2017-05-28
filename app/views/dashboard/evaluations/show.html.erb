@@ -1,0 +1,13 @@
+<% if @evaluation.answers.any? %>
+
+  <% @evaluation.answers.each do |answer| %>
+  <p>
+    Question
+  </p>
+    <%= answer.question.content %>
+    <p>
+      Answer
+    </p>
+    <%= answer.content %>
+  <% end %>
+<% end %>

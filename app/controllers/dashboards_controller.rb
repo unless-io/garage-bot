@@ -1,5 +1,5 @@
 class DashboardsController < ApplicationController
   def index
-    @coached_treatments = TreatmentProcess.where(creator_id: current_user.id).group_by(&:status)
+    @evaluations = Evaluation.joins(:treatment_process).where(treatment_process: { creator_id: current_user.id })
   end
 end

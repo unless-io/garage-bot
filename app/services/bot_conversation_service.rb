@@ -5,15 +5,30 @@ class BotConversationService
   end
 
   def call
+    Message.create(content: @message.text, user: @current_bot_user)
     if pending_evaluations?
-      set_pending_evaluations
-      questionaire_handler
+      if @current_bot_user.conversation_accepted
+        initiate_questionaire_handler
+      else
+        if @message.text.downcase == "yes" || @message.text.downcase == "i'm ready"
+          @current_bot_user.conversation_accepted = true
+          @current_bot_user.save
+          initiate_questionaire_handler
+        else
+          BotConversationAcceptService.new(message: @message, current_bot_user: @current_bot_user).call
+        end
+      end
     else
       no_questionaire_assigned_handler
     end
   end
 
   private
+
+  def initiate_questionaire_handler
+    set_pending_evaluations
+    questionaire_handler
+  end
 
   def set_pending_evaluations
     @pending_evaluations = @current_bot_user.pending_evaluations
@@ -28,6 +43,6 @@ class BotConversationService
   end
 
   def no_questionaire_assigned_handler
-    BotNoCurrentQuestionaireService.new(message: @message).call
+    BotNoCurrentQuestionaireService.new(message: @message, current_bot_user: @current_bot_user).call
   end
 end
