@@ -10,7 +10,7 @@ class Dashboard::TreatmentProcessesController < ApplicationController
 
   def new
     @treatment = TreatmentProcess.new
-    @users = User.all.order(:last_name)
+    @users = User.where.not(facebook_id: nil).order(:last_name)
     @questionaires = Questionaire.all
     @frequency_options = %w(daily weekly)
     @duration_options = ["one_week", "two_weeks", "one_month", "three_months"]
