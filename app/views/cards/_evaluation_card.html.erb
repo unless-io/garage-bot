@@ -1,11 +1,5 @@
-<div class="card  teal lighten-3">
-  <div class="card-content white-text">
-    <span class="card-title">I am a evaluation</span>
-    <p>I contain some kind of description concerning the template</p>
-  </div>
-  <div class="card-action">
-    <a href="#" class="deep-orange-text">View template</a>
-    <a href="#" class="deep-orange-text">View evaluation</a>
-    <a href="#" class="deep-orange-text">View user</a>
-  </div>
-</div>
+<%= link_to dashboard_treatment_evaluation_path(treatment, evaluation), class: "collection-item" do  %>
+<p>
+  Evaluation conducted on: <strong><%= evaluation.created_at.strftime('%A') %> <%= evaluation.created_at %></strong>
+</p>
+<% end %>

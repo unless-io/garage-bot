@@ -2,14 +2,13 @@
   <%= render partial: "dashboards/user_info" %>
 
   <% if current_user.evaluations.any? %>
-    <div class="row">
-      <!-- cards replace by @evaluations -->
-      <% current_user.evaluations.each do |evaluation| %>
-      <div class="col s6">
-        <%= render partial: "cards/evaluation_card" %>
-      </div>
-      <% end %>
-    </div>
+  <ul class="collection">
+    <% current_user.evaluations.each do |evaluation| %>
+    <li class="collection-item">
+    <%= render partial: "cards/evaluation_card", locals: { evaluation: evaluation, treatment: evaluation.treatment_process} %>
+    </li>
+    <% end %>
+  </ul>
   <% else %>
   <h2 class="text-center">
     No evaluations yet.
