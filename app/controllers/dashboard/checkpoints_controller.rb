@@ -4,11 +4,13 @@ class Dashboard::CheckpointsController < ApplicationController
 
   def destroy
     @checkpoint.destroy
+    redirect_to dashboard_treatments_path
     flash[:notice] = "Succsfully removed checkpoint for #{@checkpoint.scheduled_day}"
   end
 
   def destroy_all_checkpoints
     @treatment.checkpoints.destroy_all
+    redirect_to dashboard_treatments_path
     flash[:notice] = "Succsfully removed all checkpoints for #{@treatment.client.full_name}"
   end
 
