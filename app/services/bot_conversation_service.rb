@@ -10,7 +10,7 @@ class BotConversationService
       if @current_bot_user.conversation_accepted
         initiate_questionaire_handler
       else
-        if @message.text.downcase == "ja" || @message.text.downcase == "ik ben klaar" || @message.text.downcase == "Ik ben er klaar voor" || @message.text.downcase == "yes"
+        if @message.text.downcase == "ja" || @message.text.downcase == "ik ben klaar" || @message.text.downcase == "ik ben er klaar voor" || @message.text.downcase == "yes"
           @current_bot_user.conversation_accepted = true
           @current_bot_user.save
           initiate_questionaire_handler
